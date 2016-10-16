@@ -1,8 +1,4 @@
-<?php 
-$dbaddr='localhost';
-$dbname='';
-$dbuser='root';
-$dbpass='';
-$dbpre="bilibili_";
-$usedb=0;
+<?php
+$usecurl=0;
+$usebiliji=1;
 ?>
