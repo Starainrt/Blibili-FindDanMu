@@ -150,6 +150,8 @@ function GetDanMuByCid($cid)
 	require ($dir.'/config.php');
 	$url="http://comment.bilibili.com/".$cid.".xml";
 	$output=GetURL($url,$usecurl,0);
+	$regfix="/[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]/";
+	$output=preg_replace($regfix,"",$output);
 	return $output;
 }
 
@@ -162,6 +164,7 @@ function UserHash($userid)
 function GetUserIdByHash($userhash)
 {
 	$dir = dirname(__FILE__);
+	require ($dir.'/config.php');
 	if(preg_match("/[^0-9a-zA-Z]+/",$userhash))
 		return -1;
 	require_once($dir.'/database.php');
@@ -180,7 +183,7 @@ function GetUserIdByHash($userhash)
 	if ($num[0]==NULL)
 	{
 		$url="http://biliquery.typcn.com/api/user/hash/".$userhash;
-		$output=GetURL($url,$usecurl,0);
+		$output=GetURL($url,$usecurl,-1);
 		$regstr="/[1-9][0-9]+/";
 		if (preg_match($regstr,$output,$result))
 			return $result[0];

@@ -7,9 +7,11 @@
 <title>Bibili弹幕发送查询</title>
 <style>
 body {
+				width:device-width;
 				background-image:url('nanami.jpg');
 				background-position:top;
 				background-repeat:no-repeat;
+				background-color:#d7e2d1;
 			}
 h2{
 				font-family: '华文楷体';
@@ -46,23 +48,88 @@ h2{
 			-moz-box-shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.3);
 			box-shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.3);
 		}
-		div.transbox
+		.transbox
 	{
+		width:document.body.offsetWidth;
 		margin:30px;
 		background-color: #ffffff;
 		/* border: 1px solid black; */
 		/* for IE */
 		filter:alpha(opacity=60);
 		/* CSS3 standard */
-		opacity:0.8;
+		opacity:0.6;
 	}
-	</style>
+table a {  
+		color: #c75f3e;  
+		}  
+  
+	#mytable {  
+		width: 700px;  
+		padding: 0;  
+		margin: 0;  
+	}  
+  
+  
+	table th {  
+		font: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+		color: #4f6b72;  
+		border-right: 1px solid #C1DAD7;  
+		border-bottom: 1px solid #C1DAD7;  
+		border-top: 1px solid #C1DAD7;  
+		letter-spacing: 2px;  
+		text-transform: uppercase;  
+		text-align: left;  
+		padding: 6px 6px 6px 12px;  
+		background: #CAE8EA url(images/bg_header.jpg) no-repeat;  
+	}  
+  
+	th.nobg {  
+		border-top: 0;  
+		border-left: 0;  
+		border-right: 1px solid #C1DAD7;  
+		background: none;  
+	}  
+  
+table td {  
+    border-right: 1px solid #C1DAD7;  
+    border-bottom: 1px solid #C1DAD7;  
+    background: #fff;  
+    padding: 6px 6px 6px 12px;  
+    color: #4f6b72;  
+}  
+  
+  
+td.alt {  
+    background: #F5FAFA;  
+    color: #797268; 	
+}  
+  
+th.spec {  
+    border-left: 1px solid #C1DAD7;  
+    border-top: 0;  
+    background: #fff url(images/bullet1.gif) no-repeat;  
+    font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+}  
+  
+th.specalt {  
+    border-left: 1px solid #C1DAD7;  
+    border-top: 0;  
+    background: #f5fafa url(images/bullet2.gif) no-repeat;  
+    font: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;  
+    color: #797268;  
+}  
+</style>
 </head>
 <body>
 <script src="lib/function.js" ></script>
-<form id="send" method="get" >
 <center>
-<div class="transbox">
+<div id='bili' class='transbox'>
+<script>
+ if (document.body.offsetWidth>1200)
+	document.getElementById('bili').style.width=1200;
+</script>
+<form id="send" method="get" >
+
 <tr>
 <p><b>视频地址或AV号:分P号</b></p>
 <input id="url" name="url" type="text" size=38 "/>
@@ -77,11 +144,14 @@ h2{
 <input type="button" class="button" id="find" name="find" value="查找" onclick="sendquery()"/>
 <input type="button" class="button" id="btnsetsumei"  value="说明" onclick="setsumei()"/>
 </tr>
+</form>
 <noscript>
 <p><b>您的电脑不支持Javascript，本站功能您无法使用。请谅解</b></p>
 </noscript>
 <b><p id="setsumei" style="font-size: 16px; color:blue;"></p></b>
 <b><p id="show" style="font-size: 16px;"></p></b>
+<table border="0" width=80% id="showtable"  style="font-size: 16px;"></table>
 </div>
 </center>
-</form>
+</body>
+</html>
